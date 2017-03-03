@@ -1,0 +1,87 @@
+<head>
+    <style type="text/css">
+        .toobig{
+            width : 200px;
+            overflow:hidden;
+            display:inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        .pp{
+          /*width:100%;
+          height:100%;*/
+          max-width:140px;
+          max-height:100px;
+        }
+    </style>
+</head>
+
+
+
+<div class="page-header">
+	<h1>Student Portfolios</h1>
+</div>
+
+<div class="jumbotron text-center" ng-show="allPorts.loading">
+	<span class="glyphicon glyphicon-repeat spinner">
+		<p>Loading...</p>
+	</span>
+</div>
+
+<br>
+
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Portfolios Summary</strong>
+    </div>
+    <!-- Start: Table -->
+    <table class="table">
+        <tr>
+            <th>Profile Picture</th>
+            <th>Student Information</th>
+            <th>Project 1</th>
+            <th>Project 2</th>
+        </tr>
+        <!--| startFrom:1 | limitTo:3-->
+        <tr ng-repeat="person in allPorts.users | startFrom:(currentPage-1)*pageSize| limitTo:pageSize">
+            <td>
+            <a href="{{person.profilePicture}}"" target="_blank"><img class="pp img-circle"  src="{{person.profilePicture}}"><a>
+            </td>
+            <td >
+            Name: {{ person.firstName+" "+person.lastName}} <br>
+            Username: {{ person.username }} <br>
+            Description: {{ person.description }} <br>
+            <a href="/viewPort/{{person.username}}"> View Portfolio</a> <br>
+            </td>
+            
+            <td ng-repeat="link in person.works | limitTo: 2">
+             <a class="toobig" href="{{ link }}"  target="_blank">{{ link }}</a> 
+             </td>
+        </tr>
+        <!-- End: Table -->
+    </table>
+</div>
+
+<ul uib-pagination total-items="allPorts.users.length" ng-model="currentPage" items-per-page="pageSize"> </ul>
+
+
+
+<br>
+
+<div class="row show-hide-message" ng-show="allPorts.successMsg">
+	<div class="alert alert-success">
+		{{allPorts.successMsg}}
+	</div>
+</div>
+
+<div class="row show-hide-message" ng-show="allPorts.errorMsg">
+	<div class="alert alert-danger">
+		{{allPorts.errorMsg}}
+	</div>
+</div>
+
+
+

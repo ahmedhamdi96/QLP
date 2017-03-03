@@ -1,0 +1,127 @@
+<head>
+    <style type="text/css">
+        .toobig{
+            width : 500px;
+            overflow:hidden;
+            display:inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .showmore{
+            display: inline;
+        }
+
+        .mythumbnail{
+          /*width:100%;
+          height:100%;*/
+          max-width:200px;
+          max-height:300px;
+        }
+
+    </style>
+</head>
+
+<div class="row show-hide-message" ng-show="viewPort.errorMsg">
+    <div class="alert alert-danger">
+        {{viewPort.errorMsg}}
+    </div>
+</div>
+
+
+<div class="page-header">
+    <h1>Portfolio | {{viewPort.name}}</h1>
+</div>
+
+
+<div class="jumbotron text-center" ng-show="allPorts.loading">
+    <span class="glyphicon glyphicon-repeat spinner">
+        <p>Loading...</p>
+    </span>
+</div>
+
+
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Profile Picture</strong>
+    </div>
+
+    <div class="panel-body">
+        <a href="{{viewPort.profilePicture}}"" target="_blank"><img src="{{viewPort.profilePicture}}"  class="img-rounded" width="200px" height="250px" ></a>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Description</strong>
+    </div>
+    <div class="panel-body">
+        {{viewPort.description}}
+        <br>
+    </div>
+        
+</div>
+
+
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Projects | Links</strong>
+    </div>
+    <!-- Start: Table -->
+    <table class="table">
+        <tr ng-repeat="link in viewPort.links">
+            <td> <a class="toobig" max href="{{ link }} "  target="_blank">{{ link }}</a> </td>
+        </tr>
+        <!-- End: Table -->
+
+    </table>
+</div>
+
+
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Projects | Screenshots </strong>
+    </div>
+    <!-- Start: Table -->
+    <table class="table">
+        <tr ng-repeat="screenshot in viewPort.screenshots">
+            <td align="center"> <a href="{{screenshot}}" target="_blank"><img src="{{screenshot}}"  class="img-thumbnail" width="720px" height="480px" ></a> </td>
+        </tr>
+        <!-- End: Table -->
+
+    </table>
+</div>
+
+
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Projects | Code Repositories </strong>
+    </div>
+    <!-- Start: Table -->
+    <table class="table">
+        <tr ng-repeat="rep in viewPort.reps">
+            <td> <pre>{{rep}}</pre>
+        </tr>
+
+        <!-- End: Table -->
+
+    </table>
+</div>
+
+
+<br><br>
+
+
+
+
+
+
+
+
+

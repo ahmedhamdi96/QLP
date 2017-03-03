@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h1>Create Portfolio</h1>
+</div>
+
+<br>
+
+<form ng-submit="createPort.makePort(portData);">
+	
+	<input class="form-control" type="text" name="firstName" placeholder="First Name" ng-model="createPort.portData.firstName">
+	<br>
+	<input class="form-control" type="text" name="lastName" placeholder="Last Name" ng-model="createPort.portData.lastName">
+	<br>
+	<input class="form-control" type="text" name="description" placeholder="Description" ng-model="createPort.portData.description">
+	<br>
+	<input class="form-control" type="text" name="link" placeholder="Project Link" ng-model="createPort.portData.link">
+	<br>
+
+	<button class="btn btn-primary" type="submit"> Create Portfolio </button>
+
+</form>
+
+<br>
+
+<div class="jumbotron text-center" ng-show="createPort.loading">
+	<span class="glyphicon glyphicon-repeat spinner">
+		<p>Loading...</p>
+	</span>
+</div>
+
+<br>
+
+<div class="row show-hide-message" ng-show="createPort.successMsg">
+	<div class="alert alert-success">
+		{{createPort.successMsg}}
+	</div>
+</div>
+
+<div class="row show-hide-message" ng-show="createPort.errorMsg">
+	<div class="alert alert-danger">
+		{{createPort.errorMsg}}
+	</div>
+</div>
