@@ -87,7 +87,7 @@ app.get('*', function(req, res){
 
 
 //first thing: run the server on port: 8080
-app.listen(process.env.PORT || 8080, function(){
+app.listen(process.env.PORT || 8000, function(){
 	console.log('Server QueenLana is Online!')
 });
 
