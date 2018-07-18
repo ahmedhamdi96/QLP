@@ -17,4 +17,5 @@ Deployed Website: [http://54.202.74.9:8080/](http://54.202.74.9:8080/)
 ### Local Testing
 
 > npm install
+
 > npm start
